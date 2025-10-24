@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: rgb(209, 214, 216);
+            background-attachment: fixed;
+            background-position: 50% 50%;
+            background-size: cover;
+        }
+
+        .button-bg {
+            background-color: rgb(182, 198, 232);
+            border-radius: 15px;
+            width: 160px;
+            height: 35px;
+            margin-top: 10px;
+            text-align: center;
+            align-items: center;
+            box-shadow: 0px 0px 6px 5px rgba(182, 198, 232, 0.9);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 350px);
+            gap: 40px;
+            padding: 20px;
+            align-items: left;
+            margin-left: 60px;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        @keyframes zoomOut {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+        }
+        .card {
+            height: 230px;
+            width: 350px;
+            border-radius: 8px;
+            box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.2);
+            background-color: rgb(240, 239, 239);
+            border-left: 6px solid rgb(35, 7, 119);
+            animation: zoomIn 0.3s ease-in-out;
+        }
+
+        .zoom-out {
+            animation: zoomOut 0.3s ease-in-out;
+        }
+
+        .btn,
+        .newBtn {
+            width: 75px;
+            height: 30px;
+            background-color: rgb(5, 118, 97);
+            border-radius: 15px;
+            border: 0;
+            color: rgb(255, 255, 255);
+            font-weight: 400;
+            margin-top: 2px;
+
+        }
+
+        .newBtn {
+            width: 150px;
+            height: 30px;
+            transition: 0.3s
+        }
+
+        .newBtn:hover {
+            width: 155px;
+            height: 33px;
+            background-color: rgb(11, 85, 153);
+            border-radius: 15px;
+            border: 0;
+            color: rgb(255, 255, 255);
+            font-weight: 700;
+            margin-top: 2px;
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .newBtn:hover .button-bg {
+            background-color: rgb(36, 43, 58);
+            border-radius: 15px;
+            width: 160px;
+            height: 35px;
+            margin-top: 10px;
+            text-align: center;
+            align-items: center;
+            box-shadow: 0px 0px 6px 5px rgba(18, 21, 27, 0.9);
+        }
+
+        dialog::backdrop {
+            background: unset;
+
+        }
+
+        .bookInfo {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .cardInfo {
+            height: 140px;
+            padding: 20px;
+            margin-top: 5px;
+        }
+
+        dialog {
+            top: 95px;
+            position: fixed;
+            margin: 0;
+            left: 43%;
+            border-radius: 6px;
+            border: 0;
+            box-shadow: 0 0 6px 6px rgba(28, 54, 134, 0.6);
+            ;
+        }
+
+        .cardBottom {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .button-area {
+            text-align: center;
+            margin-top: 30px;
+            align-items: center;
+            align-content: center;
+            margin-left: 573px;
+        }
+
+        .box {
+            border-radius: 15px;
+            background-color: rgb(232, 238, 248);
+            border: 0;
+            height: 25px;
+            padding-left: 10px
+        }
+
+        #description {
+            height: 100px;
+            width: 180px;
+        }
+
+        h3 {
+            margin: 0;
+            font-family: sans-serif;
+            list-style: lower-latin;
+        }
+
+        h5 {
+            margin-top: 5px;
+            font-weight: 600;
+            color: rgb(44, 44, 44)
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: rgb(15, 179, 146);;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">Chapterly</a>
+        <nav class="nav-links">
+        </nav>
+    </header>
+
+    <div class="button-area">
+        <div class="button-bg">
+            <button class="newBtn" onclick="openForm()" id="addNew">
+                Add New Book
+            </button>
+        </div>
+    </div>
+    <dialog id="bookForm">
+        <div class="bookInfo">
+
+            <label for="title">Title:</label>
+            <input type="text" class="box" id="title" name="title">
+            <label for="author">Author: </label>
+            <input type="text" class="box" id="author" name="author">
+            <label for="pagenumber">Page Number:</label>
+            <input type="text" class="box" id="pagenumber" name="pagenumber">
+            <label for="description">Description:</label>
+            <textarea id="description" class="box" name="description"></textarea>
+
+        </div>
+        <button class="btn" id="addBook" onclick="addBook()">
+            Add
+        </button>
+        <button class="btn" id="cancel" onclick="cancel()">
+            Cancel
+        </button>
+    </dialog>
+
+
+    <dialog id="editForm">
+        <div class="bookInfo">
+
+            <label for="titleEdit">Title:</label>
+            <input type="text" class="box" id="titleEdit" name="title">
+            <label for="authorEdit">Author: </label>
+            <input type="text" class="box" id="authorEdit" name="author">
+            <label for="pagenumberEdit">Page Number:</label>
+            <input type="text" class="box" id="pagenumberEdit" name="pagenumber">
+            <label for="descriptionEdit">Description:</label>
+            <textarea id="descriptionEdit" class="box" name="description"></textarea>
+
+        </div>
+        <button class="btn" id="saveBook">
+            Save
+        </button>
+        <button class="btn" id="cancelEdit" onclick="cancelEdit()">
+            Cancel
+        </button>
+    </dialog>
+
+    <div class="container" id="cardBox">
+
+    </div>
+
+  <script>
+    
+        const dialog = document.getElementById("bookForm");
+        let books = [];
+
+        function openForm() {
+            dialog.showModal();
+        }
+        function cancel() {
+            dialog.close();
+        }
+        function addBook() {
+
+            const title = document.getElementById("title").value;
+            document.getElementById("title").value = "";
+
+            const author = document.getElementById("author").value;
+            document.getElementById("author").value = "";
+            const pagenumber = document.getElementById("pagenumber").value;
+            document.getElementById("pagenumber").value = "";
+
+            const description = document.getElementById("description").value;
+            document.getElementById("description").value = "";
+
+
+            const id_val = 'x' + crypto.randomUUID();
+
+            console.log(id_val);
+
+            let info = {
+                bookname: title,
+                author: author,
+                pagenum: pagenumber,
+                id: id_val,
+                description: description,
+            }
+
+            books.push(info);
+
+            addCard(title, author, pagenumber, id_val, description);
+            dialog.close();
+
+        }
+
+        function addCard(title, author, pagenumber, id_val, description) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.id = `card-${id_val}`;
+
+            let cardHTML = `
+            <div class="cardInfo">
+             <h3 id="title-${id_val}">${title}</h3>
+             <h5 id="author-${id_val}">${author} - ${pagenumber} </h5>
+             <p id="desc-${id_val}">${description}</p>
+             </div>
+            <div class="cardBottom">
+                <button onclick="removeBook('${id_val}')" class="btn">Remove</button>
+                <button onclick="editBook('${id_val}')" class="btn">Edit</button>
+             </div>`;
+            
+            card.innerHTML = cardHTML;
+            document.getElementById("cardBox").appendChild(card);
+        }
+
+        function removeBook(id) {
+            const element = document.getElementById(`card-${id}`);
+            element.classList.add('zoom-out');
+            element.addEventListener('animationend', () => {
+                element.remove();
+            });
+        }
+
+        const editbook = document.getElementById("editForm");
+
+        let currentEditingID = null;
+
+        function editBook(id_val) {
+
+            currentEditingID = id_val;
+            console.log(id_val);
+            const targetBook = books.find(item => item.id === id_val);
+            console.log(targetBook);
+            document.getElementById("titleEdit").value = targetBook.bookname;
+            document.getElementById("authorEdit").value = targetBook.author;
+            document.getElementById("pagenumberEdit").value = targetBook.pagenum;
+            document.getElementById("descriptionEdit").value = targetBook.description;
+
+            editbook.showModal();
+        }
+
+        const savebtn = document.getElementById("saveBook");
+        savebtn.addEventListener("click", () => {
+
+            const targetBook = books.find(item => item.id == currentEditingID);
+            const newtitle = document.getElementById("titleEdit").value;
+            const newauthor = document.getElementById("authorEdit").value;
+            const newpagenumber = document.getElementById("pagenumberEdit").value;
+            const newdesc = document.getElementById("descriptionEdit").value;
+
+            console.log(newtitle);
+
+            const card = document.getElementById(`card-${currentEditingID}`);
+            card.querySelector("h3").textContent = newtitle;
+            card.querySelector("h5").textContent = newauthor + " - " + newpagenumber + " pages";
+            card.querySelector("p").textContent = newdesc;
+
+            targetBook.bookname = newtitle;
+            targetBook.author = newauthor;
+            targetBook.description = newdesc;
+            targetBook.pagenum = newpagenumber;
+
+            editbook.close();
+            console.log(books);
+            console.log(`h3#${currentEditingID}`);
+        });
+        function cancelEdit() {
+            editbook.close();
+        }
+
+  </script>
+</body>
+
+</html>

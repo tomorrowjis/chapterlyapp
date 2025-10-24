@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f7f7f7; 
+            margin: 0;
+        }
+        
+        .login-container {
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 1.8rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #444;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        
+        .input-field:focus {
+            border-color: rgb(15, 179, 146);
+            outline: none;
+        }
+
+        .input-field::placeholder { 
+            color: rgb(112, 111, 111);
+            opacity: 0.8; 
+        }
+
+        .link-text {
+            color: rgb(15, 179, 146);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .link-text:hover {
+            color: rgb(10, 150, 122); 
+        }
+
+        .forgot-password-link {
+            display: none; 
+        }
+
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px 0;
+            background-color: rgb(15, 179, 146);
+            color: #fff;
+            font-size: 20px;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 25px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        
+        .submit-btn:hover {
+            background-color: rgb(10, 150, 122);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.99);
+        }
+
+       
+        .account-info {
+            color: rgb(115, 116, 116);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            width: 91%;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            z-index: 1000;
+            margin-bottom: 10px;
+
+        }
+
+        .logo {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: rgb(15, 179, 146);;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+     <header class="header">
+        <a href="#" class="logo">Chapterly</a>
+        <nav class="nav-links">
+        </nav>
+    </header>
+
+    <div class="login-container">
+        <h2>Create an Account</h2>
+        <form name="register" method="post" action="/register">
+            <input type="text" class="input-field" placeholder="Enter your full name" name="name" required>
+            
+            <input type="email" class="input-field" placeholder="Enter your email (unique)" name="mail" required>
+            
+            <input type="password" class="input-field" placeholder="Create a password" name="password" required>
+            
+            <button type="submit" class="submit-btn">Register</button>
+            
+            <p class="account-info">
+                Already have an account? 
+                <a href="/login" class="link-text">Log In</a>
+            </p>
+        </form>
+    </div>
+</body>
+</html>

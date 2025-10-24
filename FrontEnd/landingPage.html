@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapterly - Your Private Reading Platform</title>
+    <style>
+        /* CSS Variables for a clean, maintainable color scheme */
+        :root {
+            --primary-color: rgb(15, 179, 146); /* Greenish-teal */
+            --primary-hover-color: rgb(11, 138, 112); /* Darker greenish-teal */
+            --text-color-primary: rgb(112, 111, 111); /* Dark gray */
+            --text-color-secondary: rgb(115, 116, 116); /* Slightly lighter dark gray */
+            --border-color: rgb(190, 186, 186); /* Light gray border */
+            --white: rgb(255, 255, 255);
+            --bg-light-gray: rgb(248, 248, 248); /* For section backgrounds */
+        }
+
+        /* --- Global / Base Styles --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-color-primary);
+            background-color: var(--white);
+        }
+
+        /* --- Header Styles --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color-secondary);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            /* Changed background image query to reflect a reading platform */
+            background: linear-gradient(135deg, rgba(15, 179, 146, 0.9), rgba(11, 138, 112, 0.9)), url('https://via.placeholder.com/1500x800/222222/FFFFFF?text=Private+Reading+Group+Background') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 5%;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        .hero-section p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 15px 35px;
+            font-size: 1.1em;
+            font-weight: 700;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--bg-light-gray);
+            color: var(--primary-hover-color);
+        }
+
+        /* --- Features Section --- */
+        .features-section {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: var(--bg-light-gray);
+        }
+
+        .features-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item h3 {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .feature-item p {
+            font-size: 1em;
+            color: var(--text-color-secondary);
+        }
+
+        /* --- Call to Action Section (Bottom) --- */
+        .bottom-cta-section {
+            padding: 60px 5%;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .bottom-cta-section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #333;
+            color: var(--white);
+            text-align: center;
+            padding: 30px 5%;
+            font-size: 0.9em;
+        }
+
+        .footer .link-text {
+            color: var(--primary-color); /* Reuse link-text style */
+            text-decoration: none;
+            font-weight: normal; /* Override bold if needed */
+        }
+
+        .footer .link-text:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                margin: 5px 10px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-section p {
+                font-size: 1.1em;
+            }
+
+            .features-section h2 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2em;
+            }
+
+            .hero-section p {
+                font-size: 1em;
+            }
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Chapterly</a>
+        <nav class="nav-links">
+            <a href="#">Features</a>
+            <a href="#">Community</a>
+            <a href="#">Guides</a>
+            <a href="/login" class="link-text">Login</a>
+            <a href="/register" class="cta-button">Join Free</a>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <h1>Your Books. Your Friends. Your Private Reading Platform.</h1>
+        <p>Chapterly lets you seamlessly track your reading lists (Read, Reading, To-Read) and share opinions exclusively within private groups you create.</p>
+        <a href="/register" class="cta-button">Create Your Reading Circle</a>
+    </section>
+
+    <section class="features-section">
+        <h2>The Smartest Way to Read Together.</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>Personal Reading Lists</h3>
+                <p>Organize all your books into three distinct, easy-to-manage lists: **Read, Reading, and To-Read.** Never forget a title again.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Private, Exclusive Groups</h3>
+                <p>Create secure, **invite-only communities** for your friends or book club. Discuss freely without public feeds or noisy distractions.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Share Genuine Opinions</h3>
+                <p>Post book reviews, ratings, and real-time thoughts that are **only visible to your group.** Keep your discussions authentic.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Track Friend's Progress</h3>
+                <p>See what your friends are currently reading, how far they've gotten, and get immediate notifications when they finish a book.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bottom-cta-section">
+        <h2>Ready to upgrade your reading life? Track better, share smarter.</h2>
+        <a href="/register" class="cta-button">Start Chapterly Today</a>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2023 Chapterly. All rights reserved. <a href="#" class="link-text">Privacy Policy</a> | <a href="#" class="link-text">Terms of Service</a></p>
+    </footer>
+</body>
+</html>
