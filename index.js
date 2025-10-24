@@ -1,16 +1,5 @@
-// index.js
-const http = require('http');
-const {handleReqRes} = require('./handlers/handleReqRes')
-const chapterly = {};
+const { handleReqRes } = require('./handlers/handleReqRes');
 
-chapterly.handleReqRes = handleReqRes;
-
-chapterly.config = {
-    port: 3000,
+module.exports = (req, res) => {
+  handleReqRes(req, res);
 };
-
-chapterly.createServer = () =>{
-    const server = http.createServer(chapterly.handleReqRes);
-};
-
-chapterly.createServer();
