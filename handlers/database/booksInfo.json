@@ -1,0 +1,27 @@
+{
+  "jisan235@gmail.com": {
+    "x8eb23e8a-04e4-4aa8-b0b2-d54b912aed9d": {
+      "bookname": "Al Muqaddimah",
+      "author": "Ibne Khaldun",
+      "pagenumber": "1200",
+      "id": "x8eb23e8a-04e4-4aa8-b0b2-d54b912aed9d",
+      "desc": "Book on history and philosophy"
+    }
+  },
+  "sagor44@gmail.com": {
+    "x5ad3a064-8624-4e77-b7b8-31b533caff58": {
+      "bookname": "Adarsha Hindu Hotel",
+      "author": "Bibhutibhushan Banerjee",
+      "pagenumber": "100",
+      "id": "x5ad3a064-8624-4e77-b7b8-31b533caff58",
+      "desc": "A novel describing the life of cornered chef."
+    },
+    "x0ebc2750-c239-4533-ab20-04d5914a5587": {
+      "bookname": "Adarsha",
+      "author": "Bibhu",
+      "pagenumber": "123",
+      "id": "x0ebc2750-c239-4533-ab20-04d5914a5587",
+      "desc": "aljsdlkfj"
+    }
+  }
+}

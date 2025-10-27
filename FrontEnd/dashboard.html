@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Library</title>
+    <title>Chapterly - Dashboard</title>
     <style>
         body {
             margin: 0;
@@ -110,7 +110,6 @@
 
         dialog::backdrop {
             background: unset;
-
         }
 
         .bookInfo {
@@ -292,19 +291,70 @@
             let info = {
                 bookname: title,
                 author: author,
-                pagenum: pagenumber,
+                pagenumber: pagenumber,
                 id: id_val,
-                description: description,
+                desc: description,
             }
 
             books.push(info);
+
+            fetch('/books', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(info)
+            })
+            .then(response =>{
+                if(response.ok)return response.json();
+                else console.log("Error recieving data");
+            })
+            .then(data =>{
+                console.log(data);
+            })
+            .catch(err => {
+                console.log("Error: ", err);
+            });
 
             addCard(title, author, pagenumber, id_val, description);
             dialog.close();
 
         }
 
+        function addExistingCards(){
+            var existingBooks = {};
+            fetch('/books', {
+                method: 'GET'
+            })
+            .then(response =>{
+                if(response.ok) return response.json();
+                else console.log("Error occured");
+            })
+            .then(data =>{
+                existingBooks = data;
+
+                for(const bookId in existingBooks){
+                console.log("inside loop");
+                const bookInfoExists = existingBooks[bookId];
+                const title = bookInfoExists.bookname;
+                const author = bookInfoExists.author;
+                const pagenumber = bookInfoExists.pagenumber;
+                const description = bookInfoExists.desc;
+                const id = bookId;
+
+                addCard(title, author, pagenumber, id, description);
+               }
+            })
+            .catch(err =>{
+                console.log("there's an error");
+            });
+
+            console.log(existingBooks);
+
+        }
+
         function addCard(title, author, pagenumber, id_val, description) {
+
+
+
             const card = document.createElement('div');
             card.className = 'card';
             card.id = `card-${id_val}`;
@@ -323,6 +373,10 @@
             card.innerHTML = cardHTML;
             document.getElementById("cardBox").appendChild(card);
         }
+
+
+        addExistingCards(); //Call the existing cards first
+
 
         function removeBook(id) {
             const element = document.getElementById(`card-${id}`);
